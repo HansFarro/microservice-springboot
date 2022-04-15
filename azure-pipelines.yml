@@ -5,9 +5,15 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: BuildPushACR
+  - stage: BuildAndPush
     displayName: Build and push to ACR
     jobs:
+      - job: Maven
+        steps:
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'package'
       - job: BuildAndPush
         steps:
           - task: DockerInstaller@0
