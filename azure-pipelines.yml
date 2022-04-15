@@ -6,17 +6,17 @@ pool:
 
 stages:
   - stage: Build and push to ACR
-  jobs:
-    - job: Build
-      steps:
-        - task: DockerInstaller@0
-          inputs:
-            dockerVersion: '17.09.0-ce'
-        - task: Docker@2
-          inputs:
-            command: buildAndPush
-            Dockerfile: '**/Dockerfile'
-            containerRegistry: 'scacreastus01'
-            repository: 'ms-spring-boot'
-            addPipelineData: false
-            addBaseImageData: false
+    jobs:
+      - job: Build
+        steps:
+          - task: DockerInstaller@0
+            inputs:
+              dockerVersion: '17.09.0-ce'
+          - task: Docker@2
+            inputs:
+              command: buildAndPush
+              Dockerfile: '**/Dockerfile'
+              containerRegistry: 'scacreastus01'
+              repository: 'ms-spring-boot'
+              addPipelineData: false
+              addBaseImageData: false
