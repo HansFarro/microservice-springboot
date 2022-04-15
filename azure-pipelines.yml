@@ -8,14 +8,13 @@ stages:
   - stage: BuildAndPush
     displayName: Build and push to ACR
     jobs:
-      - job: Maven
+      - job: CompileBuildAndPush
+        displayName: Compile mvn, build and push Dockerfile
         steps:
           - task: Maven@3
             inputs:
               mavenPomFile: 'pom.xml'
               goals: 'package'
-      - job: BuildAndPush
-        steps:
           - task: DockerInstaller@0
             inputs:
               dockerVersion: '17.09.0-ce'
