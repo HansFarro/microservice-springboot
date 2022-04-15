@@ -5,9 +5,10 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Build and push to ACR
+  - stage: BuildPushACR
+    displayName: Build and push to ACR
     jobs:
-      - job: Build
+      - job: BuildAndPush
         steps:
           - task: DockerInstaller@0
             inputs:
