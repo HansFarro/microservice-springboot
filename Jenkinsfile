@@ -12,7 +12,6 @@ pipeline {
                 sh 'java --version'
                 sh 'mvn -v'
                 sh 'mvn clean install'
-                }
             }
         }
     }
