@@ -1,11 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins/ssh-agent'
+        }
+    }
     stages {
         stage('Build'){
             steps{
-                sh "java --version"
-                sh "mvn -v"
-                sh "mvn clean install"
+                sh 'java --version'
+                withMaven(){
+                    sh 'mvn clean install'
+                }
             }
         }
     }
